@@ -19,15 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
----
-
-Note on bundled third-party material:
-
-`references/official_rewriter_t2i.txt` and `references/official_rewriter_edit.txt`
-are the official Qwen-Image 2.1 rewriter system prompts, included unmodified and
-used under their own terms from Alibaba / the Qwen team. They are not covered by
-the MIT license above.
-
-`references/delivery-and-verification.md` adapts the delivery-side framing of the
-`qwen-image-gen` skill from ZSeven-W/craft-skills (MIT, (c) Fini.Yang).

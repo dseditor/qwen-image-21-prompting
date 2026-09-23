@@ -1,0 +1,12 @@
+# Third-party material
+
+The MIT license in `LICENSE` covers this repository's own content. The following
+bundled files are not covered by it:
+
+`references/official_rewriter_t2i.txt` and `references/official_rewriter_edit.txt`
+are the official Qwen-Image 2.1 rewriter system prompts, included unmodified and
+used under their own terms from Alibaba / the Qwen team. They are not covered by
+the MIT license above.
+
+`references/delivery-and-verification.md` adapts the delivery-side framing of the
+`qwen-image-gen` skill from ZSeven-W/craft-skills (MIT, (c) Fini.Yang).
