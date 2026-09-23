@@ -18,6 +18,17 @@ feed it to a local backend — this layer should not know which.
 
 ## How to use it
 
+0. **Which of the four tasks is this?** They are not variations of one another.
+
+   ```
+   prompt only       deliver text and a ratio, submit nothing
+   text-to-image     describe the finished, visible frame
+   edit this image   lead with the operation, then one preservation clause
+   from a reference  new frame, identity pointed at the image — not re-described in words
+   ```
+
+   The fourth collapses into the second if you are not watching for it.
+
 1. **Is there an input image?** That decides everything else.
    - No → read `references/official_rewriter_t2i.txt` in full, follow it step by step.
    - Yes → read `references/official_rewriter_edit.txt` in full instead.
@@ -31,11 +42,12 @@ feed it to a local backend — this layer should not know which.
 
 | Guide | Covers |
 |---|---|
-| `prompt-writing.*.md` | The two specs in brief · spec layer vs platform layer · viewpoint wording · seed-first debugging · quantity-as-quota · transparency |
-| `text-generation.*.md` | Minimum glyph size · fixed seed + word substitution · why no automated verifier can check glyphs · Traditional vs Simplified |
-| `community-findings.*.md` | Claimed capabilities that were measured — including the ones that **don't** work |
-
-   Available in `en`, `zh-Hant` and `zh-Hans`.
+| `prompt-writing.md` | The two specs in brief · spec layer vs platform layer · viewpoint wording · seed-first debugging · quantity-as-quota · transparency |
+| `text-generation.md` | Minimum glyph size · fixed seed + word substitution · why no automated verifier can check glyphs · Traditional vs Simplified |
+| `community-findings.md` | Claimed capabilities that were measured — including the ones that **don't** work |
+| `delivery-and-verification.md` | Wiring checks before you submit · accepting the image afterwards · series splitting · A/B discipline |
+| `composition-and-optics.md` | The design decisions the official spec never asks for: grid, alignment edge, type jump, negative space, reading path · lens and key-light decisions written as consequences |
+| `rgba-and-sprites.md` | Native transparency for game and web assets · reading the alpha histogram correctly · what it replaces in a sprite pipeline and what it does not |
 
 3. **If the image needs text**, do two things and no more:
    - State a minimum text size in the prompt, as a proportion of the frame.
@@ -53,3 +65,12 @@ All of them resolve ambiguity with context, which is the same mechanism that hid
 the error. A wrong character that fits the expected word reads as correct every time.
 When text has to be right, a person must look at it — or it should be composited with
 a real font.
+
+## If you are also submitting it
+
+A feature existing in Qwen-Image does not mean the endpoint you are calling exposes it.
+Before submitting, check what actually reaches the backend — mode, reference numbering,
+whether `width`/`height` are read at all, whether the seed survives the wrapper.
+Afterwards, accept on the **unretouched original**: real pixel size, alpha distribution,
+the untouched regions. A prepared request is not a generated image, and never report it
+as one. Details in `references/delivery-and-verification.md`.

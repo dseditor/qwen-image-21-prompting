@@ -57,7 +57,7 @@ text as sticker   alpha correct, but glyph quality still drops
 Note that a saved PNG may be RGBA even when transparency was not requested — the
 alpha channel is simply all-opaque. **Check the alpha distribution, not the file mode.**
 
-## ✅ Text rendering — see `text-generation.en.md`
+## ✅ Text rendering — see `text-generation.md`
 
 Summary: minimum glyph size matters; failures are systematic per-string rather than
 random; description language and type style have no effect; and **no automated

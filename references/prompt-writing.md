@@ -91,4 +91,4 @@ close with  The image has alpha channel and the background is transparent.
 ```
 
 Clean for ordinary objects (measured: 59.2% fully transparent, only 0.5% partial).
-**Not for text** — glyph quality drops noticeably. See `text-generation.en.md`.
+**Not for text** — glyph quality drops noticeably. See `text-generation.md`.
