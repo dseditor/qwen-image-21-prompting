@@ -10,7 +10,9 @@ no input image  →  official_rewriter_t2i.txt   → {rewritten_prompt, wh_ratio
 has input image →  official_rewriter_edit.txt  → + ratio_follow
 ```
 
-The t2i spec is **eight ordered steps, and later steps never revise earlier ones**.
+The t2i spec is **eight ordered writing stages, and later stages never revise earlier
+ones**. ⚠️ These are stages of *writing the description* — nothing to do with sampler
+steps (the official ComfyUI template ships with KSampler at 25).
 Writing from memory collapses eight steps into one — which is exactly what it guards
 against.
 

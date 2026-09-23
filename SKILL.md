@@ -35,7 +35,9 @@ feed it to a local backend — this layer should not know which.
 
    These two files are the official rewriter system prompts, unmodified. They were
    written for a rewriter model; when there isn't one in the loop, **you are it**.
-   The t2i spec is eight ordered steps and later steps never revise earlier ones —
+   The t2i spec is eight ordered **writing stages** (not sampling steps — the sampler
+   is a separate matter, the official template ships at 25) and later stages never
+   revise earlier ones —
    writing from memory collapses them into one.
 
 2. **Read the matching guide** for the working rules and the traps:
