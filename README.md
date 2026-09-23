@@ -13,11 +13,64 @@ weights, quantization or runtime settings.
 
 ## Install
 
-Drop the folder into your skills directory:
+**Paste this to your agent:**
 
 ```
-~/.claude/skills/qwen-image-21/
+Read https://github.com/dseditor/qwen-image-21-prompting and install that skill for me,
+following the "For the agent reading this" section of the README.
 ```
+
+### For the agent reading this
+
+You are installing a **prompting skill**: plain text files, no code to run, no API keys,
+no model downloads, and no network access at run time.
+
+**1. Pick the target directory for the host you are in:**
+
+| Host | Target directory |
+|---|---|
+| Claude Code | `~/.claude/skills/qwen-image-21/` |
+| Codex CLI | `~/.codex/skills/qwen-image-21/` |
+| Any other host with a filesystem | wherever that host loads skills from |
+
+**2. Clone into it:**
+
+```bash
+git clone --depth 1 https://github.com/dseditor/qwen-image-21-prompting.git <target>
+```
+
+If `git` is unavailable, download the repo zip and extract it so that **`SKILL.md` sits at
+the top level** of `<target>` — not nested inside another folder.
+
+**3. Verify — do not skip this:**
+
+The host should now list a skill named `qwen-image-21`. If it does not, check that
+`<target>/SKILL.md` exists and that its YAML frontmatter (`name:` and `description:`)
+is intact. A skill whose frontmatter is broken loads as nothing, silently.
+
+**4. Then tell the user one thing:** this skill writes prompts. It does not generate
+images. They still need their own Qwen-Image endpoint — ComfyUI, an API, or a web UI.
+
+### No filesystem (Grok, ChatGPT web, and similar)
+
+There is nothing to install. Create a Project and drop these files into it:
+
+```
+references/official_rewriter_t2i.txt     required — the official text-to-image spec
+references/official_rewriter_edit.txt    required — the official editing spec
+references/prompt-writing.md             the two specs in brief, plus measured rules
+```
+
+Add these when you need them:
+
+```
+references/text-generation.md            text inside the image, especially Chinese
+references/composition-and-optics.md     layout and lens decisions
+references/rgba-and-sprites.md           transparency and game assets
+references/community-findings.md         what was measured — including what fails
+```
+
+Then just describe the picture you want; the model follows the spec from the project files.
 
 ## What's inside
 

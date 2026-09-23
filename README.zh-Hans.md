@@ -10,11 +10,64 @@
 
 ## 安装
 
-把整个文件夹放进 skills 目录：
+**把这句贴给你的 agent：**
 
 ```
-~/.claude/skills/qwen-image-21/
+请阅读 https://github.com/dseditor/qwen-image-21-prompting
+并照 README 的「给正在读这段的 agent」把这个 skill 安装起来
 ```
+
+### 给正在读这段的 agent
+
+你要安装的是一个**提示词 skill**：纯文本档，没有程序要跑、不需要 API 密钥、
+不会下载模型，运行时也不连网。
+
+**1. 依你所在的宿主选目标文件夹：**
+
+| 宿主 | 目标文件夹 |
+|---|---|
+| Claude Code | `~/.claude/skills/qwen-image-21/` |
+| Codex CLI | `~/.codex/skills/qwen-image-21/` |
+| 其他有文件系统的宿主 | 该宿主加载 skill 的位置 |
+
+**2. clone 进去：**
+
+```bash
+git clone --depth 1 https://github.com/dseditor/qwen-image-21-prompting.git <目标文件夹>
+```
+
+没有 `git` 的话就下载 zip 解压，注意要让 **`SKILL.md` 直接躺在目标文件夹的第一层**，
+不要多包一层文件夹。
+
+**3. 验证 —— 这步不要跳过：**
+
+宿主现在应该列得出一个叫 `qwen-image-21` 的 skill。如果没有，检查
+`<目标文件夹>/SKILL.md` 在不在、它的 YAML frontmatter（`name:` 与 `description:`）有没有坏掉。
+**frontmatter 坏掉的 skill 会安静地不存在**，不会报错。
+
+**4. 然后告诉用户一件事**：这个 skill 只负责写提示词，它不会生图。
+用户仍然需要自己的 Qwen-Image 出口 —— ComfyUI、API、或某个网页接口。
+
+### 没有文件系统的（Grok、ChatGPT 网页版之类）
+
+没有东西要安装。开一个「项目」，把这几个文件拖进去：
+
+```
+references/official_rewriter_t2i.txt     必要 —— 官方文生图规范
+references/official_rewriter_edit.txt    必要 —— 官方图片编辑规范
+references/prompt-writing.md             两份规范的精要，加上实测出来的规则
+```
+
+需要的时候再加这些：
+
+```
+references/text-generation.md            画面里的文本，尤其是中文
+references/composition-and-optics.md     版面与镜头的决策层
+references/rgba-and-sprites.md           透明背景与游戏素材
+references/community-findings.md         实测结果 —— 包含【不成立】的那些
+```
+
+然后直接描述你要的画面就好，模型会照项目文件里的规范走。
 
 ## 里面有什么
 
